@@ -53,7 +53,7 @@ public class SecurityConfig {
                         // ============================================
 
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        
+
                         // Autenticación
                         .requestMatchers(
                                 "/api/auth/login",
