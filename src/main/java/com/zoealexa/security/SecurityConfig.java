@@ -52,13 +52,15 @@ public class SecurityConfig {
                         // ENDPOINTS PÚBLICOS (sin autenticación)
                         // ============================================
 
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        
                         // Autenticación
                         .requestMatchers(
                                 "/api/auth/login",
                                 "/api/auth/register",
                                 "/api/auth/obtener-codigo",
                                 "/api/auth/recuperar-password",
-                                "/api/auth//cambiar-password"
+                                "/api/auth/cambiar-password"
                         ).permitAll()
 
                         // Búsqueda de viajes (público)
@@ -204,7 +206,7 @@ public class SecurityConfig {
         configuration.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/**", configuration);
+        source.registerCorsConfiguration("/**", configuration);
 
         return source;
     }
